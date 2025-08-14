@@ -147,13 +147,13 @@ def validate_counts_table(df):
     
 
 
-def merge_tables (annotation_path, counts_path, output_path, output_name):
+def merge_tables (annotations_path, counts_path, output_path, output_name):
     '''Une los dataframes de anotaciones y expresión diferencial, mediante la columna "ID".
     Se mantienen todas las filas de la tabla de expresión diferencial.
     Se guarda el resultado en un archivo csv
     
     Args:
-        annotation_path(str): Ruta del archivo con la tabla de anotaciones.
+        annotations_path(str): Ruta del archivo con la tabla de anotaciones.
         counts_path(str): Ruta del archivo con la tabla de expresión diferencial(conteos).
         output_path(str): Ruta donde se guardará el archivo csv generado.
         output_name(str): Nombre que recibe el archivo csv generado(especificar extensión).
@@ -165,7 +165,7 @@ def merge_tables (annotation_path, counts_path, output_path, output_name):
     output_file = (f"{output_path}/{output_name}")
 
     # Cargar y validar la tabla de anotaciones
-    annotations_df = validate_annotations_table(get_df(annotation_path))
+    annotations_df = validate_annotations_table(get_df(annotations_path))
 
     #Cargar y validar la tabla de conteos
     counts_df = validate_counts_table(get_df(counts_path))
@@ -190,8 +190,8 @@ def main():
     args = parser.parse_args()
 
     merge_tables(
-        annotation_path=args.annotations,
-        count_path=args.counts,
+        annotations_path=args.annotations,
+        counts_path=args.counts,
         output_path=args.outputdir,
         output_name=args.name
         )
