@@ -1,20 +1,3 @@
-'''
-Las columnas de RNAMallo y BeiRNA no son las mismas. Las de BeiRNA venían ya formateadas con otros nombres.
-Las columnas de la tabla de conteos de RNAMallo traen columnas vacias como V2, V3, etc. que vienen del script anterior que forma la tabla 
-que las deja en blanco si no encuentra informacion. No se si la encuentra si era relevante y la querían conservar.
-Una posible solución es que el script anterior no saque esas columnas vacias y simplemente se saque la informacion que se quiere rellenar a la tabla 
-de expresión diferencial de la de anotaciones. Porque claro, al tener más de 6 columnas con las vacías el script falla en la funcion de validacion.
-La de validacion de anotaciones falla porque los nombres de las columnas estaban adaptados a BeiRNA y en RNAMallo son otros, por ejemplo la primera es #ID 
-en vez de ORF ID.
-Mirar scritps anteriores que sacan las tablas y ver cómo hacer el merge y por que salen tablas de anotaciones algunas con 15 o con 35 columnas de ahí.
-Igual es que al buscar en todas las bases de datos el genoma si en alguna encuentra en todas acaban siendo más columnas y si alguna no lo encuentra igual acaban siendo solo 15
-por ejemplo. No se si, por ejemplo, no encuentra nada en SwissProt igual lo que hace es dejar las columnas en blanco, pero las mantiene, o directamente las borra
-y por eso puede haber menos en algunos casos.
-
-Intentar adaptar script con los indices de las columnas en vez de con los nombres por ejemplo en vez de jugar con ORF ID seleccionar ese indice y renombrarlo a ID en todos los casos,
-porque el ID creo que siempre es la primera columna que aparece
-'''
-
 # IMPORTS
 import polars as pl
 import os
