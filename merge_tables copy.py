@@ -25,8 +25,11 @@ def get_df(file_path):
 
   try:
 
-    file_path = Path(file_path).resolve()
-    print(f"[yellow]:warning:[/] Se utilizará el siguiente archivo [bold green]{file_path.name}[/]")
+    file_path = Path(file_path).expanduser().resolve()
+    if not path.exists():
+        raise FileNotFoundError(f"❌ Archivo no encontrado: {path}")
+    else:
+        print(f"[yellow]:warning:[/] Se utilizará el siguiente archivo [bold green]{file_path.name}[/]")
 
     with open(file_path, 'r', newline='', encoding='utf-8') as f:
 
